@@ -149,8 +149,8 @@ def run_generic_command(
 
         try:
             status = TaskStatus(result.returncode)
-            public_message = result.stdout[:1024].decode().strip()
-            private_message = result.stderr[:1024].decode().strip()
+            public_message = result.stdout[:4096].decode().strip()
+            private_message = result.stderr[:4096].decode().strip()
             if status == TaskStatus.CHECK_FAILED:
                 log_error(action, team, result, logger)
         except ValueError as e:
